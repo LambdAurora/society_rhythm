@@ -36,6 +36,7 @@ namespace society_rhythm
 		options.opengl_forward_compat = true;
 #endif
 		window = ionicengine::window::createWindow(u8"Society Rhythm", 800, 600, options);
+		glfwSwapInterval(1);
 		window.requestContext();
 		window.initContext();
 
