@@ -7,23 +7,22 @@
  * see the LICENSE file.
  */
 
-#ifndef SOCIETY_RHYTHM_MAIN_MENU_SCREEN_H
-#define SOCIETY_RHYTHM_MAIN_MENU_SCREEN_H
+#ifndef SOCIETY_RHYTHM_INGAME_SCREEN_H
+#define SOCIETY_RHYTHM_INGAME_SCREEN_H
 
 #include "../game.h"
 
 namespace society_rhythm
 {
-	class MainMenuScreen : public ionicengine::Screen
+	class InGameScreen : public ionicengine::Screen
 	{
 	private:
 		Game *game;
-		uint32_t buttonsWidth = 150;
-		int x = 0, y = 0;
-		int centeredComponentsCount = 3;
+		bool timeToUpdate;
+		int updates;
 
 	public:
-		explicit MainMenuScreen(Game *game);
+		explicit InGameScreen(Game *game);
 
 		void init() override;
 
@@ -33,4 +32,4 @@ namespace society_rhythm
 	};
 }
 
-#endif //SOCIETY_RHYTHM_MAIN_MENU_SCREEN_H
+#endif //SOCIETY_RHYTHM_INGAME_SCREEN_H

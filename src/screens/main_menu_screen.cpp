@@ -20,6 +20,7 @@ namespace society_rhythm
 		y = (height / 2) - (((24 + 2) * centeredComponentsCount) / 2);
 		auto playButton = new ionicengine::GuiButton(x, y + 2, buttonsWidth, 24, "Play");
 		playButton->setFont(ionicengine::getFontManager()->getFont(SR_FONT_ROBOTO));
+		playButton->setClickListener([&](ionicengine::Window &window) { game->changeScreen(SR_SCREEN_INGAME); });
 		components.push_back(playButton);
 		auto creditsButton = new ionicengine::GuiButton(x, y + playButton->height + 7, buttonsWidth, 24, "Credits");
 		creditsButton->setFont(ionicengine::getFontManager()->getFont(SR_FONT_ROBOTO));

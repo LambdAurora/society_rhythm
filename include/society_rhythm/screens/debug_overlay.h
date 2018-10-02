@@ -20,7 +20,7 @@ namespace society_rhythm
 		Game *game;
 
 	public:
-		DebugOverlay(Game *game);
+		explicit DebugOverlay(Game *game);
 
 		void init() override;
 

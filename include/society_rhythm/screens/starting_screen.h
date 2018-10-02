@@ -20,7 +20,6 @@ namespace society_rhythm
 		Game *game;
 		std::string loading = "Loading...";
 		std::string warning = std::string("\t\t\t\t\t\t\t\tWARNING:\n")
-										+ "\t\t\tPlease do not play this game if you are sensible.\n"
 										+ "This game is not suitable for children or those who are easily disturbed.";
 		bool warningDisplay = true;
 		int counter = 0;
@@ -28,7 +27,7 @@ namespace society_rhythm
 		bool warningFinished = false;
 
 	public:
-		StartingScreen(Game *game);
+		explicit StartingScreen(Game *game);
 
 		void init() override;
 

@@ -1,0 +1,24 @@
+{
+  "level": "society_rhythm:levels/slaughter_house",
+  "stages": [
+    {
+      "background": {
+        "color": "#7F8C8DFF",
+        "image": null
+      },
+      "animations": {
+        "static": [
+          {
+            "name": "society_rhythm:textures/conveyor_belt/slaughter_house",
+            "time": 0,
+            "frames": 2,
+            "invertOnRepeat": false
+          }
+        ]
+      }
+    }
+  ],
+  "actions": {
+
+  }
+}

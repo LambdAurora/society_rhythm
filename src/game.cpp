@@ -11,9 +11,12 @@
 #include "../include/society_rhythm/screens/debug_overlay.h"
 #include "../include/society_rhythm/screens/starting_screen.h"
 #include "../include/society_rhythm/screens/main_menu_screen.h"
+#include "../include/society_rhythm/screens/ingame_screen.h"
 
 #include <ionicengine/ionicengine.h>
+#ifdef DISCORD_RPC_LINKED
 #include <discord_rpc.h>
+#endif
 #include <iostream>
 
 namespace society_rhythm
@@ -48,12 +51,14 @@ namespace society_rhythm
 
 		screens.registerScreen(SR_SCREEN_STARTING, new StartingScreen(this));
 		screens.registerScreen(SR_SCREEN_MAIN_MENU, new MainMenuScreen(this));
+		screens.registerScreen(SR_SCREEN_INGAME, new InGameScreen(this));
 		changeScreen(SR_SCREEN_STARTING);
 
 		ionicengine::getGraphicsManager()->init();
 
 		screens.attachWindow(window);
 
+#ifdef DISCORD_RPC_LINKED
 		DiscordEventHandlers handlers{};
 		handlers.ready = [](const DiscordUser *request)
 		{
@@ -72,13 +77,16 @@ namespace society_rhythm
 		handlers.joinRequest = [](const DiscordUser *request) {};
 
 		Discord_Initialize("492038277302452244", &handlers, 0, nullptr);
+#endif
 
 		screens.startLoop();
 	}
 
 	void Game::shutdown()
 	{
+#ifdef DISCORD_RPC_LINKED
 		Discord_Shutdown();
+#endif
 		ionicengine::shutdown();
 	}
 
@@ -106,6 +114,7 @@ namespace society_rhythm
 
 	void Game::updateRichPresence() const
 	{
+#ifdef DISCORD_RPC_LINKED
 		DiscordRichPresence discordPresence{nullptr};
 		if (currentScreen == SR_SCREEN_MAIN_MENU)
 		{
@@ -128,5 +137,6 @@ namespace society_rhythm
 		//discordPresence.smallImageText = "";
 		discordPresence.instance = false;
 		Discord_UpdatePresence(&discordPresence);
+#endif
 	}
 }
